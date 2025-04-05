@@ -1,0 +1,14 @@
+{
+  "pull_request": {
+    "title": "WRONG TITLE",
+    "body": "Too short",
+    "changed_files": 6,
+    "number": 123
+  },
+  "repository": {
+    "name": "your-repo",
+    "owner": {
+      "login": "your-username"
+    }
+  }
+}
