@@ -1,0 +1,5 @@
+.github/
+└── workflows/
+    └── pr-check.yml       <-- GitHub Action definition
+scripts/
+└── validate-pr.js         <-- PR validation logic
