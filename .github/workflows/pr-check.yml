@@ -1,0 +1,30 @@
+name: PR Validation
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Run PR validation script
+        run: node scripts/validate-pr.js
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # Pass token via input for Octokit usage
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Fail on invalid PR
+        if: failure()
+        run: echo "PR does not meet validation rules"
